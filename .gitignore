@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+WIN/cp_bmp/.vs/
+WIN/cp_bmp/Debug/
+WIN/cp_bmp/cp_bmp.vcxproj.user
