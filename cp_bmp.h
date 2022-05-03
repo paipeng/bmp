@@ -10,6 +10,11 @@
 
 #include <stdio.h>
 
+#if defined(__GNUC__)
+#define CP_EXPORTF
+#else
+#define CP_EXPORTF __declspec(dllexport)
+#endif
 
 #pragma pack(1)
 
@@ -24,15 +29,15 @@ typedef struct _cp_mat {
 #pragma pack()
 
 #if defined(c_plusplus) || defined(__cplusplus)
-    extern "C" {
+extern "C" {
 #endif
-    cp_mat* init_cp_mat(unsigned int width, unsigned int height, unsigned int channel);
-    void free_cp_mat(cp_mat* mat);
-    // Read BMP images
-    cp_mat* cp_read_bmp_image(char* file);
-    int cp_write_bmp_image(char* file, cp_mat* mat, int dpi);
+CP_EXPORTF cp_mat* init_cp_mat(unsigned int width, unsigned int height, unsigned int channel);
+CP_EXPORTF void free_cp_mat(cp_mat* mat);
+// Read BMP images
+CP_EXPORTF cp_mat* cp_read_bmp_image(char* file);
+CP_EXPORTF int cp_write_bmp_image(char* file, cp_mat* mat, int dpi);
 #if defined(c_plusplus) || defined(__cplusplus)
-    } /* extern "C" */
+} /* extern "C" */
 #endif
 
 
