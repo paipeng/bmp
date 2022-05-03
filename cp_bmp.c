@@ -87,7 +87,7 @@ cp_mat* cp_read_bmp_image(char* file) {
     char padding_buf[8];
     size_t read_size;
     int ret;
-#if WIN32
+#if _WINDOWS
     ret = fopen_s(&f, file, "rb+");
 #else
     f = fopen(file, "rb+");
@@ -173,7 +173,7 @@ int cp_write_bmp_image(char* file, cp_mat* mat, int dpi) {
     }
     bitmapInfoHeader.importantColors = 0;
 
-#if WIN32
+#if _WINDOWS
     ret = fopen_s(&f, file, "rb+");
 #else
     f = fopen(file, "rb+");
